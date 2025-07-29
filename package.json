@@ -12,7 +12,7 @@
     "test": "jest",
     "lint": "expo lint",
     "lint:fix": "expo lint --fix",
-    "doctor": "expo doctor",
+    "doctor": "npx expo-doctor",
     "format": "prettier --write .",
     "commitmsg": "commitlint --edit",
     "prepare": "husky install"
