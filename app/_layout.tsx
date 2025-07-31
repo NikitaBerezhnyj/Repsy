@@ -1,4 +1,5 @@
 import { useLoadAssets } from "@/hooks/useLoadAssets";
+import "@/translation/i18n";
 import { useTheme } from "@react-navigation/native";
 import { Stack } from "expo-router";
 import { View } from "react-native";

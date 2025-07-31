@@ -1,0 +1,9 @@
+{
+  "notFound": {
+    "title": "Not Found",
+    "description1": "Looks like you got lost.",
+    "description2": "Try going back or navigating to the homepage.",
+    "back": "Go back",
+    "home": "Go to homepage"
+  }
+}
