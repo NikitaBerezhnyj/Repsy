@@ -1,32 +1,40 @@
-import { Link, Stack } from "expo-router";
-import { StyleSheet } from "react-native";
-
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
+import { Button } from "@/components/ui/Button";
+import { Paragraph } from "@/components/ui/Paragraph";
+import { Title } from "@/components/ui/Title";
+import { useRouter } from "expo-router";
+import React from "react";
+import { StyleSheet, View } from "react-native";
 
 export default function NotFoundScreen() {
+  const router = useRouter();
+
   return (
-    <>
-      <Stack.Screen options={{ title: "Oops!" }} />
-      <ThemedView style={styles.container}>
-        <ThemedText type="title">This screen does not exist.</ThemedText>
-        <Link href="/" style={styles.link}>
-          <ThemedText type="link">Go to home screen!</ThemedText>
-        </Link>
-      </ThemedView>
-    </>
+    <View style={styles.container}>
+      <Title align="center" style={{ marginBottom: 20 }}>
+        Не знайдено
+      </Title>
+      <Paragraph align="center" style={{ marginBottom: 12 }}>
+        Схоже ви заблукали.
+      </Paragraph>
+      <Paragraph align="center" style={{ marginBottom: 12 }}>
+        Спробуйте повернутися назад або перейти на головну сторінку.
+      </Paragraph>
+      <Button onPress={() => router.back()} style={{ marginTop: 30 }}>
+        Повернутись назад
+      </Button>
+      <Button onPress={() => router.replace("/(tabs)")} style={{ marginTop: 30 }}>
+        Повернутись на головну
+      </Button>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
+    paddingHorizontal: 24,
     justifyContent: "center",
-    padding: 20
-  },
-  link: {
-    marginTop: 15,
-    paddingVertical: 15
+    alignItems: "center",
+    backgroundColor: "#1A141F"
   }
 });
