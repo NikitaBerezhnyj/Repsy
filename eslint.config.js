@@ -15,7 +15,7 @@ module.exports = defineConfig([
       ...require("eslint-plugin-sonarjs").configs.recommended.rules,
 
       "no-unused-vars": ["warn", { vars: "all", args: "after-used", ignoreRestSiblings: true }],
-      "no-console": "warn",
+      "no-console": "off",
       "sonarjs/no-commented-code": "off",
       "sonarjs/cognitive-complexity": ["warn", 15]
     }
