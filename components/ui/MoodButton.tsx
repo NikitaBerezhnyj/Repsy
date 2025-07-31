@@ -26,7 +26,11 @@ export const MoodButton: React.FC<MoodButtonProps> = ({
   };
 
   return (
-    <Pressable onPress={onPress} style={[styles.button, { backgroundColor: getColor() }]}>
+    <Pressable
+      testID="mood-button"
+      onPress={onPress}
+      style={[styles.button, { backgroundColor: getColor() }]}
+    >
       <Text style={styles.emoji}>{emoji}</Text>
       <Text style={styles.label}>{label}</Text>
     </Pressable>

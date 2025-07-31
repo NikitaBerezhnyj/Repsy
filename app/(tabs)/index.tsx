@@ -15,7 +15,6 @@ const mockPrograms = [
   { id: 2, name: "Кардіо", exercises: 8 },
   { id: 3, name: "Фулбоді", exercises: 15 },
   { id: 4, name: "Ще одна програма", exercises: 10 }
-  // { id: 5, name: "Ще друга програма", exercises: 4 }
 ];
 
 export default function HomeScreen() {
