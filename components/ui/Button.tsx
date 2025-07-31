@@ -52,6 +52,7 @@ export const Button: React.FC<ButtonProps> = ({
       disabled={disabled}
       style={[
         {
+          width: "100%",
           backgroundColor: disabled ? colors.border : colors.primary,
           paddingVertical: spacing.sm,
           paddingHorizontal: spacing.lg,
