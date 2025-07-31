@@ -56,7 +56,7 @@ export default function ScreenContainer({
       opacity.value = withTiming(1, { duration: 250 });
       translateX.value = withTiming(0, { duration: 250 });
     }
-  }, []);
+  }, [animationType, opacity, scale, translateX]);
 
   const animatedStyle = useAnimatedStyle(() => ({
     opacity: opacity.value,
