@@ -21,6 +21,7 @@ export const Subtitle: React.FC<SubtitleProps> = ({
       {...props}
       style={[
         {
+          fontFamily: "Unbounded",
           fontSize: fontSizes.lg,
           color: colors.text,
           fontWeight: "600",

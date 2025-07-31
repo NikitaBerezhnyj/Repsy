@@ -22,6 +22,7 @@ export const Paragraph: React.FC<ParagraphProps> = ({
         {...props}
         style={[
           {
+            fontFamily: "Unbounded",
             fontSize: fontSizes.md,
             color: colors.text,
             fontWeight: "400",

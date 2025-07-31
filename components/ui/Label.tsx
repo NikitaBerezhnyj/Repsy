@@ -16,6 +16,7 @@ export const Label: React.FC<LabelProps> = ({ align = "left", style, children, .
       {...props}
       style={[
         {
+          fontFamily: "Unbounded",
           fontSize: fontSizes.sm,
           color: colors.textMuted,
           fontWeight: "400",

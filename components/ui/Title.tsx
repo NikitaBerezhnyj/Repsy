@@ -17,9 +17,10 @@ export const Title: React.FC<TitleProps> = ({ align = "left", style, children, .
         {...props}
         style={[
           {
+            fontFamily: "Unbounded",
             fontSize: fontSizes.xl,
             color: colors.text,
-            fontWeight: "bold",
+            fontWeight: "800",
             textAlign: align
           },
           style
