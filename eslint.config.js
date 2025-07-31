@@ -13,6 +13,10 @@ module.exports = defineConfig([
     },
     rules: {
       ...require("eslint-plugin-sonarjs").configs.recommended.rules,
+
+      "no-unused-vars": ["warn", { vars: "all", args: "after-used", ignoreRestSiblings: true }],
+      "no-console": "warn",
+      "sonarjs/no-commented-code": "off",
       "sonarjs/cognitive-complexity": ["warn", 15]
     }
   }
