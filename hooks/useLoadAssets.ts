@@ -22,7 +22,7 @@ export function useLoadAssets() {
 
   useEffect(() => {
     load();
-  }, []);
+  }, [load]);
 
   return ready;
 }
