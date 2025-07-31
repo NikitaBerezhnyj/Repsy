@@ -17,6 +17,7 @@ module.exports = defineConfig([
       "no-unused-vars": ["warn", { vars: "all", args: "after-used", ignoreRestSiblings: true }],
       "no-console": "off",
       "sonarjs/no-commented-code": "off",
+      "sonarjs/pseudo-random": "off",
       "sonarjs/cognitive-complexity": ["warn", 15]
     }
   }
