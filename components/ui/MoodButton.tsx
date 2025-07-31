@@ -18,9 +18,9 @@ export const MoodButton: React.FC<MoodButtonProps> = ({
 }) => {
   const getColor = () => {
     const colors = {
-      good: { base: "#D4EDDA", selected: "#A5D6A7" }, // зелений
-      normal: { base: "#FFF3CD", selected: "#FFD54F" }, // помаранчевий
-      bad: { base: "#F8D7DA", selected: "#EF9A9A" } // червоний
+      good: { base: "#D4EDDA", selected: "#A5D6A7" },
+      normal: { base: "#FFF3CD", selected: "#FFD54F" },
+      bad: { base: "#F8D7DA", selected: "#EF9A9A" }
     };
     return selected ? colors[mood].selected : colors[mood].base;
   };
