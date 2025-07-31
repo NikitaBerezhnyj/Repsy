@@ -1,6 +1,6 @@
 import { useTheme } from "@/hooks/useTheme";
 import React from "react";
-import { StyleProp, Text, TextProps, TextStyle } from "react-native";
+import { StyleProp, Text, TextProps, TextStyle, View } from "react-native";
 
 type SubtitleProps = TextProps & {
   align?: TextStyle["textAlign"];
@@ -14,23 +14,26 @@ export const Subtitle: React.FC<SubtitleProps> = ({
   children,
   ...props
 }) => {
-  const { colors, fontSizes } = useTheme();
+  const { colors, spacing, fontSizes } = useTheme();
 
   return (
-    <Text
-      {...props}
-      style={[
-        {
-          fontFamily: "Unbounded",
-          fontSize: fontSizes.lg,
-          color: colors.text,
-          fontWeight: "600",
-          textAlign: align
-        },
-        style
-      ]}
-    >
-      {children}
-    </Text>
+    <View>
+      <Text
+        {...props}
+        style={[
+          {
+            fontFamily: "Unbounded",
+            fontSize: fontSizes.lg,
+            color: colors.text,
+            fontWeight: "600",
+            textAlign: align,
+            marginBottom: spacing.sm
+          },
+          style
+        ]}
+      >
+        {children}
+      </Text>
+    </View>
   );
 };

@@ -14,10 +14,10 @@ export const Paragraph: React.FC<ParagraphProps> = ({
   children,
   ...props
 }) => {
-  const { colors, fontSizes } = useTheme();
+  const { colors, spacing, fontSizes } = useTheme();
 
   return (
-    <View style={{ width: "100%" }}>
+    <View>
       <Text
         {...props}
         style={[
@@ -26,7 +26,8 @@ export const Paragraph: React.FC<ParagraphProps> = ({
             fontSize: fontSizes.md,
             color: colors.text,
             fontWeight: "400",
-            textAlign: align
+            textAlign: align,
+            marginBottom: spacing.sm
           },
           style
         ]}

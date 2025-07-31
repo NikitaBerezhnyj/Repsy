@@ -54,12 +54,13 @@ export const Button: React.FC<ButtonProps> = ({
         {
           width: "100%",
           backgroundColor: disabled ? colors.border : colors.primary,
-          paddingVertical: spacing.sm,
+          paddingVertical: spacing.md,
           paddingHorizontal: spacing.lg,
           borderRadius: 4,
           alignItems: "center",
           justifyContent: "center",
-          opacity: disabled ? 0.6 : 1
+          opacity: disabled ? 0.6 : 1,
+          marginBottom: spacing.sm
         },
         style
       ]}

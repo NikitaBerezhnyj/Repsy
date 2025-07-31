@@ -1,6 +1,6 @@
 import { useTheme } from "@/hooks/useTheme";
 import React from "react";
-import { StyleProp, Text, TextProps, TextStyle } from "react-native";
+import { StyleProp, Text, TextProps, TextStyle, View } from "react-native";
 
 type LabelProps = TextProps & {
   align?: TextStyle["textAlign"];
@@ -9,23 +9,26 @@ type LabelProps = TextProps & {
 };
 
 export const Label: React.FC<LabelProps> = ({ align = "left", style, children, ...props }) => {
-  const { colors, fontSizes } = useTheme();
+  const { colors, spacing, fontSizes } = useTheme();
 
   return (
-    <Text
-      {...props}
-      style={[
-        {
-          fontFamily: "Unbounded",
-          fontSize: fontSizes.sm,
-          color: colors.textMuted,
-          fontWeight: "400",
-          textAlign: align
-        },
-        style
-      ]}
-    >
-      {children}
-    </Text>
+    <View>
+      <Text
+        {...props}
+        style={[
+          {
+            fontFamily: "Unbounded",
+            fontSize: fontSizes.sm,
+            color: colors.textMuted,
+            fontWeight: "400",
+            textAlign: align,
+            marginBottom: spacing.sm
+          },
+          style
+        ]}
+      >
+        {children}
+      </Text>
+    </View>
   );
 };

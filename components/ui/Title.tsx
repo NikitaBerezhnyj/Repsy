@@ -9,10 +9,10 @@ type TitleProps = TextProps & {
 };
 
 export const Title: React.FC<TitleProps> = ({ align = "left", style, children, ...props }) => {
-  const { colors, fontSizes } = useTheme();
+  const { colors, spacing, fontSizes } = useTheme();
 
   return (
-    <View style={{ width: "100%" }}>
+    <View>
       <Text
         {...props}
         style={[
@@ -21,7 +21,8 @@ export const Title: React.FC<TitleProps> = ({ align = "left", style, children, .
             fontSize: fontSizes.xl,
             color: colors.text,
             fontWeight: "800",
-            textAlign: align
+            textAlign: align,
+            marginBottom: spacing.sm
           },
           style
         ]}
