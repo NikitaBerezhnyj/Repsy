@@ -1,3 +1,4 @@
+import { CoachBreakModal } from "@/components/modal/CoachBreakModal";
 import { Button } from "@/components/ui/Button";
 import { Checkbox } from "@/components/ui/Checkbox";
 import { Input } from "@/components/ui/Input";
@@ -14,47 +15,52 @@ export default function StatisticsScreen() {
   const { direction } = useTabAnimation();
   const [email, setEmail] = useState("");
   const [checked, setChecked] = useState(false);
+  const [showCoachTip, setShowCoachTip] = useState(false);
 
   return (
-    <ScreenContainer animationType="spring" direction={direction}>
-      <View style={styles.container}>
-        <Text style={styles.title}>Статистика</Text>
-
-        <View style={styles.statsContainer}>
-          <View style={styles.statCard}>
-            <Text style={styles.statNumber}>156</Text>
-            <Text style={styles.statLabel}>Всього днів</Text>
+    <>
+      <ScreenContainer animationType="spring" direction={direction}>
+        <View style={styles.container}>
+          <Text style={styles.title}>Статистика</Text>
+          <View style={styles.statsContainer}>
+            <View style={styles.statCard}>
+              <Text style={styles.statNumber}>156</Text>
+              <Text style={styles.statLabel}>Всього днів</Text>
+            </View>
+            <View style={styles.statCard}>
+              <Text style={styles.statNumber}>89%</Text>
+              <Text style={styles.statLabel}>Прогрес</Text>
+            </View>
           </View>
+          <Title>Заголовок</Title>
+          <Subtitle>Заголовок</Subtitle>
+          <Paragraph>Заголовок</Paragraph>
+          <Label>Заголовок</Label>
+          <Button
+            onPress={() => {
+              console.log("Button pressed");
+            }}
+          >
+            Кнопка
+          </Button>
 
-          <View style={styles.statCard}>
-            <Text style={styles.statNumber}>89%</Text>
-            <Text style={styles.statLabel}>Прогрес</Text>
-          </View>
+          <Button onPress={() => setShowCoachTip(true)}>💡 Порада тренера</Button>
+
+          <Input
+            placeholder="Email"
+            value={email}
+            onChangeText={setEmail}
+            keyboardType="email-address"
+          />
+          <Checkbox
+            label="Це приклад великого тексту, який переноситься на кілька рядків і закреслюється, коли вибрано чекбокс"
+            checked={checked}
+            onToggle={() => setChecked((prev) => !prev)}
+          />
         </View>
-        <Title>Заголовок</Title>
-        <Subtitle>Заголовок</Subtitle>
-        <Paragraph>Заголовок</Paragraph>
-        <Label>Заголовок</Label>
-        <Button
-          onPress={() => {
-            console.log("Button pressed");
-          }}
-        >
-          Кнопка
-        </Button>
-        <Input
-          placeholder="Email"
-          value={email}
-          onChangeText={setEmail}
-          keyboardType="email-address"
-        />
-        <Checkbox
-          label="Це приклад великого тексту, який переноситься на кілька рядків і закреслюється, коли вибрано чекбокс"
-          checked={checked}
-          onToggle={() => setChecked((prev) => !prev)}
-        />
-      </View>
-    </ScreenContainer>
+      </ScreenContainer>
+      <CoachBreakModal visible={showCoachTip} onClose={() => setShowCoachTip(false)} />
+    </>
   );
 }
 

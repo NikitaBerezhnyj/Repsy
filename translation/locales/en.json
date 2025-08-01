@@ -1,4 +1,47 @@
 {
+  "coachTips": {
+    "hydration": {
+      "tip1": "Remember to drink water during your workout!",
+      "tip2": "Don't wait until you're thirsty — hydrate regularly.",
+      "tip3": "Take small sips of water while exercising."
+    },
+    "technique": {
+      "tip1": "Focus on proper exercise technique.",
+      "tip2": "Quality is more important than quantity.",
+      "tip3": "Listen to your body and avoid sudden jerks."
+    },
+    "recovery": {
+      "tip1": "Don’t forget to stretch after your workout.",
+      "tip2": "Rest is key to muscle growth.",
+      "tip3": "Sleep helps your body recover more efficiently."
+    },
+    "motivation": {
+      "tip1": "You've already taken a step toward a better you!",
+      "tip2": "Even small progress is still progress.",
+      "tip3": "You are stronger than you think."
+    },
+    "nutrition": {
+      "tip1": "Don't skip meals after training.",
+      "tip2": "Balanced nutrition is the foundation of results.",
+      "tip3": "Remember to get enough protein for muscle recovery."
+    },
+    "posture": {
+      "tip1": "Keep your back straight during exercises.",
+      "tip2": "Avoid neck strain during your workout.",
+      "tip3": "Engage your core throughout the movement."
+    },
+    "consistency": {
+      "tip1": "Consistency is more important than intensity.",
+      "tip2": "Even 15 minutes a day is better than none.",
+      "tip3": "Build the habit — results will follow."
+    },
+    "rest": {
+      "tip1": "Good sleep helps muscles grow.",
+      "tip2": "Don't push to the limit every day — rest is essential.",
+      "tip3": "Plan rest days — they're part of your progress too."
+    }
+  },
+
   "notFound": {
     "title": "Not Found",
     "description1": "Looks like you got lost.",
