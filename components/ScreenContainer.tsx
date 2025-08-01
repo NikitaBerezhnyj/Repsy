@@ -2,7 +2,7 @@ import { useTheme } from "@/hooks/useTheme";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import React, { useEffect } from "react";
-import { Dimensions, Platform, StatusBar, TouchableOpacity, View } from "react-native";
+import { Dimensions, Platform, ScrollView, StatusBar, TouchableOpacity, View } from "react-native";
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -175,7 +175,7 @@ export default function ScreenContainer({
           animationType === "fade" ? fadeStyle : animatedStyle
         ]}
       >
-        {children}
+        <ScrollView showsVerticalScrollIndicator={false}>{children}</ScrollView>
       </Animated.View>
     </View>
   );
