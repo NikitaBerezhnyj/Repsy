@@ -5,10 +5,13 @@ import { Subtitle } from "@/components/ui/Subtitle";
 import { Title } from "@/components/ui/Title";
 import { useTheme } from "@/hooks/useTheme";
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { StyleSheet, View } from "react-native";
 
 export default function SessionCompleteScreen() {
   const { colors } = useTheme();
+  const { t } = useTranslation();
+
   const trainingTime = 60;
   const endedEarly = false;
   const [mood, setMood] = useState<"good" | "normal" | "bad" | null>(endedEarly ? "bad" : null);
@@ -20,32 +23,34 @@ export default function SessionCompleteScreen() {
   return (
     <View style={[styles.container, { backgroundColor: colors.background }]}>
       <View style={styles.inner}>
-        <Title align="center">Тренування завершено</Title>
-        <Paragraph align="center">Тривалість: {trainingTime} хв</Paragraph>
+        <Title align="center">{t("sessionComplete.title")}</Title>
+        <Paragraph align="center">
+          {t("sessionComplete.duration", { minutes: trainingTime })}
+        </Paragraph>
 
         {!endedEarly && (
           <>
             <View style={styles.spacer} />
-            <Subtitle align="center">Як почуваєтесь?</Subtitle>
+            <Subtitle align="center">{t("sessionComplete.howDoYouFeel")}</Subtitle>
 
             <View style={styles.moodRow}>
               <MoodButton
                 emoji="😄"
-                label="Круто"
+                label={t("sessionComplete.mood.good")}
                 mood="good"
                 selected={mood === "good"}
                 onPress={() => setMood("good")}
               />
               <MoodButton
                 emoji="😐"
-                label="Нормально"
+                label={t("sessionComplete.mood.normal")}
                 mood="normal"
                 selected={mood === "normal"}
                 onPress={() => setMood("normal")}
               />
               <MoodButton
                 emoji="😞"
-                label="Погано"
+                label={t("sessionComplete.mood.bad")}
                 mood="bad"
                 selected={mood === "bad"}
                 onPress={() => setMood("bad")}
@@ -55,7 +60,7 @@ export default function SessionCompleteScreen() {
         )}
 
         <View style={styles.spacer} />
-        <Button onPress={handleFinish}>Завершити</Button>
+        <Button onPress={handleFinish}>{t("sessionComplete.finish")}</Button>
       </View>
     </View>
   );

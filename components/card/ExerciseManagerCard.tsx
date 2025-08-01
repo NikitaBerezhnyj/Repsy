@@ -1,6 +1,7 @@
 import { useTheme } from "@/hooks/useTheme";
 import { Ionicons } from "@expo/vector-icons";
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { StyleSheet, TouchableOpacity } from "react-native";
 import { Label } from "../ui/Label";
 
@@ -10,13 +11,17 @@ type Props = {
 
 export default function ExerciseManagerCard({ onPress }: Props) {
   const { colors } = useTheme();
+  const { t } = useTranslation();
 
   return (
     <TouchableOpacity
       style={[styles.menuItem, { backgroundColor: colors.surface }]}
       onPress={onPress}
     >
-      <Label style={[styles.menuItemText, { color: colors.text }]}>Управління вправами</Label>
+      <Label style={[styles.menuItemText, { color: colors.text }]}>
+        {" "}
+        {t("homeScreen.program-management-card")}
+      </Label>
       <Ionicons name="fitness-outline" size={24} color={colors.primary} />
     </TouchableOpacity>
   );

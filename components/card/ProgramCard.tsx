@@ -59,16 +59,6 @@ const styles = StyleSheet.create({
   info: {
     flex: 1
   },
-  name: {
-    fontSize: 16,
-    fontWeight: "600",
-    color: "#1F2937",
-    marginBottom: 4
-  },
-  details: {
-    fontSize: 14,
-    color: "#6B7280"
-  },
   actions: {
     flexDirection: "row"
   },

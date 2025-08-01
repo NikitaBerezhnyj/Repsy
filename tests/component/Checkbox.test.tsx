@@ -4,25 +4,24 @@ import React from "react";
 import { act } from "react-test-renderer";
 
 jest.mock("@expo/vector-icons", () => {
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   const { Text } = require("react-native");
   return {
     Ionicons: ({ name, ...props }: any) => <Text {...props}>{name}</Text>
   };
 });
 
-describe("Checkbox", () => {
-  it("рендерить label", () => {
-    const { getByText } = render(
-      <Checkbox label="Погоджуюсь" checked={false} onToggle={() => {}} />
-    );
+describe("[COMPONENT TEST]: Checkbox", () => {
+  it("renders the label", () => {
+    const { getByText } = render(<Checkbox label="I agree" checked={false} onToggle={() => {}} />);
 
-    expect(getByText("Погоджуюсь")).toBeTruthy();
+    expect(getByText("I agree")).toBeTruthy();
   });
 
-  it("викликає onToggle при натисканні", () => {
+  it("calls onToggle when pressed", () => {
     const onToggleMock = jest.fn();
     const { getByRole } = render(
-      <Checkbox label="Погоджуюсь" checked={false} onToggle={onToggleMock} />
+      <Checkbox label="I agree" checked={false} onToggle={onToggleMock} />
     );
 
     act(() => {
@@ -32,18 +31,18 @@ describe("Checkbox", () => {
     expect(onToggleMock).toHaveBeenCalledTimes(1);
   });
 
-  it("показує правильний стан checked і стилі", () => {
+  it("shows the correct checked state and styles", () => {
     const { getByText, rerender } = render(
-      <Checkbox label="Погоджуюсь" checked={false} onToggle={() => {}} />
+      <Checkbox label="I agree" checked={false} onToggle={() => {}} />
     );
 
-    const label = getByText("Погоджуюсь");
+    const label = getByText("I agree");
     expect(label.props.style).toEqual(
       expect.arrayContaining([expect.objectContaining({ textDecorationLine: "none" })])
     );
 
     act(() => {
-      rerender(<Checkbox label="Погоджуюсь" checked onToggle={() => {}} />);
+      rerender(<Checkbox label="I agree" checked onToggle={() => {}} />);
     });
 
     expect(label.props.style).toEqual(

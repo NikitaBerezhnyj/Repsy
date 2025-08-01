@@ -3,9 +3,9 @@ import { Paragraph } from "@/components/ui/Paragraph";
 import { Title } from "@/components/ui/Title";
 import { useCoachTips } from "@/hooks/useCoachTips";
 import { useTheme } from "@/hooks/useTheme";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Animated, Dimensions, StyleSheet, View } from "react-native";
+import { Dimensions, StyleSheet, View } from "react-native";
 
 interface CoachBreakModalProps {
   visible: boolean;
@@ -23,60 +23,21 @@ export const CoachBreakModal: React.FC<CoachBreakModalProps> = ({
   const { t } = useTranslation();
   const { colors } = useTheme();
   const tip = useCoachTips(visible);
-
-  const fadeAnim = React.useRef(new Animated.Value(0)).current;
-  const scaleAnim = React.useRef(new Animated.Value(0.8)).current;
-  const progressAnim = React.useRef(new Animated.Value(1)).current;
-
-  const [secondsLeft, setSecondsLeft] = React.useState(timerDuration);
+  const [secondsLeft, setSecondsLeft] = useState(timerDuration);
+  const [showModal, setShowModal] = useState(visible);
 
   useEffect(() => {
     if (visible) {
-      Animated.parallel([
-        Animated.timing(fadeAnim, {
-          toValue: 1,
-          duration: 300,
-          useNativeDriver: true
-        }),
-        Animated.spring(scaleAnim, {
-          toValue: 1,
-          tension: 100,
-          friction: 8,
-          useNativeDriver: true
-        }),
-        Animated.timing(progressAnim, {
-          toValue: 0,
-          duration: timerDuration * 1000,
-          useNativeDriver: false
-        })
-      ]).start();
-
+      setShowModal(true);
       setSecondsLeft(timerDuration);
     } else {
-      Animated.parallel([
-        Animated.timing(fadeAnim, {
-          toValue: 0,
-          duration: 200,
-          useNativeDriver: true
-        }),
-        Animated.timing(scaleAnim, {
-          toValue: 0.8,
-          duration: 200,
-          useNativeDriver: true
-        }),
-        Animated.timing(progressAnim, {
-          toValue: 1,
-          duration: 200,
-          useNativeDriver: false
-        })
-      ]).start();
+      setShowModal(false);
     }
-  }, [visible, timerDuration, fadeAnim, scaleAnim, progressAnim]);
+  }, [visible, timerDuration]);
 
   useEffect(() => {
     if (!visible) return;
 
-    setSecondsLeft(timerDuration);
     const interval = setInterval(() => {
       setSecondsLeft((prev) => {
         if (prev <= 1) {
@@ -91,45 +52,37 @@ export const CoachBreakModal: React.FC<CoachBreakModalProps> = ({
     return () => clearInterval(interval);
   }, [visible, onClose, timerDuration]);
 
-  if (!visible || !tip) {
-    return null;
-  }
+  if (!showModal || !tip) return null;
 
-  const progressBarWidth = progressAnim.interpolate({
-    inputRange: [0, 1],
-    outputRange: ["0%", "100%"]
-  });
+  const PROGRESS_BAR_WIDTH = SCREEN_WIDTH - 40;
+  const progressBarWidthInPx = (secondsLeft / timerDuration) * PROGRESS_BAR_WIDTH;
 
   return (
-    <Animated.View
-      style={[
-        styles.overlay,
-        { backgroundColor: colors.surface, opacity: fadeAnim, transform: [{ scale: scaleAnim }] }
-      ]}
-    >
+    <View style={[styles.overlay, { backgroundColor: colors.surface }]}>
       <Title style={{ fontSize: 56, marginBottom: 16 }}>{tip.emoji}</Title>
 
-      <Paragraph align="center">
-        {t(`coachTips.${tip.category}.${tip.key}`, "Порада недоступна")}
-      </Paragraph>
+      <Paragraph align="center">{t(`coachTips.${tip.category}.${tip.key}`)}</Paragraph>
 
       <View style={[styles.progressBarBackground, { backgroundColor: colors.border }]}>
-        <Animated.View
+        <View
           style={[
             styles.progressBarFill,
-            { width: progressBarWidth, backgroundColor: colors.primary }
+            {
+              width: progressBarWidthInPx,
+              backgroundColor: colors.primary
+            }
           ]}
         />
       </View>
 
       <Paragraph style={[styles.timerText, { color: colors.primary }]}>
-        {secondsLeft} {t("seconds_left", "секунд")}
+        {secondsLeft} {t("coachTips.seconds_left")}
       </Paragraph>
 
       <Button onPress={onClose} style={styles.closeButton} textStyle={{ fontWeight: "700" }}>
-        {t("close", "Закрити")}
+        {t("coachTips.close")}
       </Button>
-    </Animated.View>
+    </View>
   );
 };
 

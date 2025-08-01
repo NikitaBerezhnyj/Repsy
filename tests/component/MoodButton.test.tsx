@@ -2,8 +2,8 @@ import { MoodButton } from "@/components/ui/MoodButton";
 import { fireEvent, render } from "@testing-library/react-native";
 import React from "react";
 
-describe("MoodButton", () => {
-  it("renders emoji and label correctly", () => {
+describe("[COMPONENT TEST]: MoodButton", () => {
+  it("Renders emoji and label correctly", () => {
     const { getByText } = render(
       <MoodButton emoji="😀" label="Круто" mood="good" onPress={() => {}} />
     );
@@ -12,7 +12,7 @@ describe("MoodButton", () => {
     expect(getByText("Круто")).toBeTruthy();
   });
 
-  it("calls onPress when pressed", () => {
+  it("Calls onPress when pressed", () => {
     const onPressMock = jest.fn();
 
     const { getByText } = render(
@@ -23,7 +23,7 @@ describe("MoodButton", () => {
     expect(onPressMock).toHaveBeenCalledTimes(1);
   });
 
-  it("applies correct background color when selected", () => {
+  it("Applies correct background color when selected", () => {
     const { getByTestId } = render(
       <MoodButton emoji="😞" label="Погано" mood="bad" selected onPress={() => {}} />
     );

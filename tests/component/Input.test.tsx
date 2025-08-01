@@ -2,16 +2,16 @@ import { Input } from "@/components/ui/Input";
 import { fireEvent, render } from "@testing-library/react-native";
 import React from "react";
 
-describe("Input", () => {
-  it("рендериться з переданим placeholder", () => {
+describe("[COMPONENT TEST]: Input", () => {
+  it("renders with the provided placeholder", () => {
     const { getByPlaceholderText } = render(
-      <Input placeholder="Введіть текст" value="" onChangeText={() => {}} />
+      <Input placeholder="Enter text" value="" onChangeText={() => {}} />
     );
 
-    expect(getByPlaceholderText("Введіть текст")).toBeTruthy();
+    expect(getByPlaceholderText("Enter text")).toBeTruthy();
   });
 
-  it("передає значення у TextInput", () => {
+  it("passes the value to the TextInput", () => {
     const { getByDisplayValue } = render(
       <Input placeholder="Email" value="test@example.com" onChangeText={() => {}} />
     );
@@ -19,20 +19,20 @@ describe("Input", () => {
     expect(getByDisplayValue("test@example.com")).toBeTruthy();
   });
 
-  it("викликає onChangeText при зміні тексту", () => {
+  it("calls onChangeText when text changes", () => {
     const onChangeMock = jest.fn();
     const { getByPlaceholderText } = render(
-      <Input placeholder="Пароль" value="" onChangeText={onChangeMock} secureTextEntry />
+      <Input placeholder="Password" value="" onChangeText={onChangeMock} secureTextEntry />
     );
 
-    fireEvent.changeText(getByPlaceholderText("Пароль"), "12345");
+    fireEvent.changeText(getByPlaceholderText("Password"), "12345");
     expect(onChangeMock).toHaveBeenCalledWith("12345");
   });
 
-  it("передає secureTextEntry і keyboardType правильно", () => {
+  it("correctly passes secureTextEntry and keyboardType props", () => {
     const { getByPlaceholderText } = render(
       <Input
-        placeholder="Пароль"
+        placeholder="Password"
         value=""
         onChangeText={() => {}}
         secureTextEntry
@@ -40,7 +40,7 @@ describe("Input", () => {
       />
     );
 
-    const input = getByPlaceholderText("Пароль");
+    const input = getByPlaceholderText("Password");
     expect(input.props.secureTextEntry).toBe(true);
     expect(input.props.keyboardType).toBe("default");
   });

@@ -8,6 +8,7 @@ import { colors } from "@/theme";
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 
 const programs = [
@@ -19,6 +20,7 @@ const programs = [
 
 export default function HomeScreen() {
   const { spacing } = useTheme();
+  const { t } = useTranslation();
 
   const openExercises = () => {
     router.push("/(stack)/exercises");
@@ -35,7 +37,7 @@ export default function HomeScreen() {
       <View style={styles.container}>
         <View style={styles.section}>
           <View style={styles.sectionHeader}>
-            <Paragraph style={{ flex: 1 }}>Мої програми</Paragraph>
+            <Paragraph style={{ flex: 1 }}>{t("homeScreen.myPrograms")}</Paragraph>
             <TouchableOpacity onPress={() => router.push("/(stack)/program/new")}>
               <Ionicons name="add-circle-outline" size={24} color={colors.primary} />
             </TouchableOpacity>
@@ -49,7 +51,7 @@ export default function HomeScreen() {
         </View>
 
         <View style={styles.section}>
-          <Paragraph style={{ marginBottom: spacing.sm }}>Менеджмент</Paragraph>
+          <Paragraph style={{ marginBottom: spacing.sm }}>{t("homeScreen.management")}</Paragraph>
           <ExerciseManagerCard onPress={openExercises} />
         </View>
       </View>

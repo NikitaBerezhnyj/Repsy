@@ -2,14 +2,14 @@ import { Label } from "@/components/ui/Label";
 import { render } from "@testing-library/react-native";
 import React from "react";
 
-describe("Label component", () => {
-  it("renders correctly with children", () => {
+describe("[COMPONENT TEST]: Label component", () => {
+  it("Renders correctly with children", () => {
     const { getByText } = render(<Label>Test Label</Label>);
     const textElement = getByText("Test Label");
     expect(textElement).toBeTruthy();
   });
 
-  it("applies custom styles and alignment", () => {
+  it("Applies custom styles and alignment", () => {
     const { getByText } = render(
       <Label align="center" style={{ fontSize: 30 }}>
         Aligned Label

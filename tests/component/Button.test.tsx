@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/Button";
 import { fireEvent, render } from "@testing-library/react-native";
 import React from "react";
 
-describe("Button", () => {
+describe("[COMPONENT TEST]: Button", () => {
   it("renders correctly with text", () => {
     const { getByText } = render(<Button>Натисни мене</Button>);
     expect(getByText("Натисни мене")).toBeTruthy();

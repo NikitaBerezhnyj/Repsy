@@ -2,14 +2,14 @@ import { Title } from "@/components/ui/Title";
 import { render } from "@testing-library/react-native";
 import React from "react";
 
-describe("Title component", () => {
-  it("renders correctly with children", () => {
+describe("[COMPONENT TEST]: Title component", () => {
+  it("Renders correctly with children", () => {
     const { getByText } = render(<Title>Test Title</Title>);
     const textElement = getByText("Test Title");
     expect(textElement).toBeTruthy();
   });
 
-  it("applies custom styles and alignment", () => {
+  it("Applies custom styles and alignment", () => {
     const { getByText } = render(
       <Title align="center" style={{ fontSize: 30 }}>
         Aligned Title

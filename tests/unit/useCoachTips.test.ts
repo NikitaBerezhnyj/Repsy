@@ -24,12 +24,12 @@ jest.mock("react-i18next", () => ({
   })
 }));
 
-describe("useCoachTips", () => {
+describe("[UNIT]: useCoachTips", () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
-  it("повертає випадкову пораду з emoji", () => {
+  it("Returns a random tip with emoji", () => {
     mockGetDataByLanguage.mockReturnValue({
       translation: {
         coachTips: mockTips
@@ -53,7 +53,7 @@ describe("useCoachTips", () => {
     }
   });
 
-  it("повертає null, якщо немає даних", () => {
+  it("Returns null if no data is returned", () => {
     mockGetDataByLanguage.mockReturnValue(null);
 
     const { result } = renderHook(() => useCoachTips());
@@ -62,7 +62,7 @@ describe("useCoachTips", () => {
     expect(mockGetDataByLanguage).toHaveBeenCalledWith(mockLanguage);
   });
 
-  it("повертає null, якщо coachTips відсутні", () => {
+  it("Returns null if coachTips is missing", () => {
     mockGetDataByLanguage.mockReturnValue({
       translation: {}
     });
@@ -72,7 +72,7 @@ describe("useCoachTips", () => {
     expect(result.current).toBeNull();
   });
 
-  it("повертає null, якщо категорія порожня", () => {
+  it("Returns null if category is empty", () => {
     mockGetDataByLanguage.mockReturnValue({
       translation: {
         coachTips: {

@@ -1,5 +1,16 @@
 {
+  "homeScreen": {
+    "myPrograms": "My Programs",
+    "management": "Management",
+    "addProgram": "Add Program",
+    "program-management-card": "Program Management",
+    "exercise-management-card": "Exercise management"
+  },
+
   "coachTips": {
+    "seconds_left": "seconds",
+    "close": "Close",
+
     "hydration": {
       "tip1": "Remember to drink water during your workout!",
       "tip2": "Don't wait until you're thirsty — hydrate regularly.",
@@ -40,6 +51,18 @@
       "tip2": "Don't push to the limit every day — rest is essential.",
       "tip3": "Plan rest days — they're part of your progress too."
     }
+  },
+
+  "sessionComplete": {
+    "title": "Workout Complete",
+    "duration": "Duration: {{minutes}} min",
+    "howDoYouFeel": "How do you feel?",
+    "mood": {
+      "good": "Cool",
+      "normal": "Normal",
+      "bad": "Bad"
+    },
+    "finish": "Finish"
   },
 
   "notFound": {
