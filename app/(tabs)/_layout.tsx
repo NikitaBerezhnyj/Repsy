@@ -1,4 +1,5 @@
-import { useTheme } from "@/hooks/useTheme";
+import { usePremium } from "@/hooks/usePremium";
+import { colors, sizes, spacing } from "@/theme";
 import { Ionicons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
 import { Platform } from "react-native";
@@ -6,7 +7,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function TabLayout() {
   const insets = useSafeAreaInsets();
-  const { colors, spacing, fontSizes } = useTheme();
+  const isPremium = usePremium();
 
   return (
     <Tabs
@@ -35,7 +36,7 @@ export default function TabLayout() {
           })
         },
         tabBarLabelStyle: {
-          fontSize: fontSizes.xs,
+          fontSize: sizes.xs,
           fontWeight: "500"
         },
         animation: "shift"
@@ -69,6 +70,16 @@ export default function TabLayout() {
               size={24}
               color={color}
             />
+          )
+        }}
+      />
+      <Tabs.Screen
+        name="donate"
+        options={{
+          title: "",
+          href: isPremium ? null : "/donate",
+          tabBarIcon: ({ color, focused }) => (
+            <Ionicons name={focused ? "gift" : "gift-outline"} size={24} color={color} />
           )
         }}
       />
