@@ -58,7 +58,9 @@ export default function ScreenContainer({
           animationType === "fade" ? fadeStyle : animatedStyle
         ]}
       >
-        <ScrollView showsVerticalScrollIndicator={false}>{children}</ScrollView>
+        <ScrollView contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
+          {children}
+        </ScrollView>
       </Animated.View>
     </View>
   );

@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/Button";
 import { Paragraph } from "@/components/ui/Paragraph";
 import { Title } from "@/components/ui/Title";
 import { useCoachTips } from "@/hooks/useCoachTips";
-import { colors, sizes, spacing } from "@/theme";
+import { colors } from "@/theme";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Dimensions, StyleSheet, View } from "react-native";
@@ -58,7 +58,7 @@ export const CoachBreakModal: React.FC<CoachBreakModalProps> = ({
 
   return (
     <View style={[styles.overlay, { backgroundColor: colors.surface }]}>
-      <Title style={{ fontSize: sizes.xl, marginBottom: spacing.md }}>{tip.emoji}</Title>
+      <Title style={{ fontSize: 56, marginBottom: 16 }}>{tip.emoji}</Title>
 
       <Paragraph align="center">{t(`coachTips.${tip.category}.${tip.key}`)}</Paragraph>
 

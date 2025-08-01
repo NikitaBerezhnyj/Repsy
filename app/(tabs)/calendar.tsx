@@ -1,13 +1,10 @@
 import React from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import ScreenContainer from "../../components/ScreenContainer";
-import { useTabAnimation } from "../../hooks/useTabAnimation";
 
 export default function CalendarScreen() {
-  const { direction } = useTabAnimation();
-
   return (
-    <ScreenContainer animationType="spring" direction={direction}>
+    <ScreenContainer animationType="spring">
       <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
         <Text style={styles.title}>Календар</Text>
 

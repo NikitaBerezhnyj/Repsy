@@ -1,4 +1,6 @@
 import { CoachBreakModal } from "@/components/modal/CoachBreakModal";
+import { NoPremiumAccess } from "@/components/NoPremiumAccess";
+import ScreenContainer from "@/components/ScreenContainer";
 import { Button } from "@/components/ui/Button";
 import { Checkbox } from "@/components/ui/Checkbox";
 import { Input } from "@/components/ui/Input";
@@ -6,20 +8,27 @@ import { Label } from "@/components/ui/Label";
 import { Paragraph } from "@/components/ui/Paragraph";
 import { Subtitle } from "@/components/ui/Subtitle";
 import { Title } from "@/components/ui/Title";
+import { usePremium } from "@/hooks/usePremium";
 import React, { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import ScreenContainer from "../../components/ScreenContainer";
-import { useTabAnimation } from "../../hooks/useTabAnimation";
 
 export default function StatisticsScreen() {
-  const { direction } = useTabAnimation();
   const [email, setEmail] = useState("");
   const [checked, setChecked] = useState(false);
   const [showCoachTip, setShowCoachTip] = useState(false);
+  const isPremium = usePremium();
+
+  if (!isPremium) {
+    return (
+      <ScreenContainer animationType="spring">
+        <NoPremiumAccess />
+      </ScreenContainer>
+    );
+  }
 
   return (
     <>
-      <ScreenContainer animationType="spring" direction={direction}>
+      <ScreenContainer animationType="spring">
         <View style={styles.container}>
           <Text style={styles.title}>Статистика</Text>
           <View style={styles.statsContainer}>
