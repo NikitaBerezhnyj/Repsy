@@ -19,7 +19,7 @@ export default function TabLayout() {
           backgroundColor: colors.surface,
           borderTopWidth: 1,
           borderTopColor: colors.border,
-          paddingBottom: Platform.OS === "ios" ? insets.bottom : spacing.sm,
+          paddingBottom: insets.bottom + spacing.xl,
           paddingTop: spacing.sm,
           height: Platform.OS === "ios" ? 80 + insets.bottom : 70,
           ...Platform.select({

@@ -169,8 +169,7 @@ export default function ScreenContainer({
         style={[
           {
             flex: 1,
-            paddingHorizontal: spacing.lg,
-            paddingBottom: insets.bottom
+            paddingHorizontal: spacing.lg
           },
           animationType === "fade" ? fadeStyle : animatedStyle
         ]}
