@@ -1,3 +1,5 @@
+import { LANGUAGE_KEY } from "@/constants/Constants";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as Localization from "expo-localization";
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
@@ -7,12 +9,27 @@ import uk from "./locales/uk.json";
 const languageDetector = {
   type: "languageDetector",
   async: true,
-  detect: (callback: (lang: string) => void) => {
+  detect: async (callback: (lang: string) => void) => {
+    try {
+      const savedLanguage = await AsyncStorage.getItem(LANGUAGE_KEY);
+      if (savedLanguage) {
+        callback(savedLanguage);
+        return;
+      }
+    } catch (error) {
+      console.error("Failed to retrieve language from AsyncStorage", error);
+    }
     const languageCode = Localization.getLocales()[0]?.languageCode || "en";
     callback(languageCode);
   },
   init: () => {},
-  cacheUserLanguage: () => {}
+  cacheUserLanguage: async (language: string) => {
+    try {
+      await AsyncStorage.setItem(LANGUAGE_KEY, language);
+    } catch (e) {
+      console.error("Failed to save language to AsyncStorage", e);
+    }
+  }
 };
 
 i18n
@@ -26,6 +43,9 @@ i18n
     },
     interpolation: {
       escapeValue: false
+    },
+    react: {
+      useSuspense: false
     }
   });
 
