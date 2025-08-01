@@ -1,14 +1,13 @@
 import { Button } from "@/components/ui/Button";
 import { Paragraph } from "@/components/ui/Paragraph";
 import { Title } from "@/components/ui/Title";
-import { useTheme } from "@/hooks/useTheme";
+
+import { colors, spacing } from "@/theme";
 import i18n from "@/translation/i18n";
 import React from "react";
 import { StyleSheet, View } from "react-native";
 
 export default function SettingsScreen() {
-  const { colors } = useTheme();
-
   const toggleLanguage = () => {
     const newLang = i18n.language === "uk" ? "en" : "uk";
     i18n.changeLanguage(newLang);
@@ -28,6 +27,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    padding: 16
+    padding: spacing.md
   }
 });

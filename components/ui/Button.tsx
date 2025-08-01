@@ -1,4 +1,4 @@
-import { useTheme } from "@/hooks/useTheme";
+import { colors, sizes, spacing } from "@/theme";
 import React, { useEffect } from "react";
 import {
   GestureResponderEvent,
@@ -27,8 +27,6 @@ export const Button: React.FC<ButtonProps> = ({
   disabled,
   ...props
 }) => {
-  const { colors, spacing, fontSizes } = useTheme();
-
   const debouncedOnPress = useDebouncedCallback(
     (event: GestureResponderEvent) => {
       if (onPress) {
@@ -71,7 +69,7 @@ export const Button: React.FC<ButtonProps> = ({
           style={[
             {
               color: colors.background,
-              fontSize: fontSizes.md,
+              fontSize: sizes.md,
               fontWeight: "600"
             },
             textStyle

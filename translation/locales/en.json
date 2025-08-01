@@ -65,6 +65,16 @@
     "finish": "Finish"
   },
 
+  "donateScreen": {
+    "subtitleSupportUs": "Support the Author",
+    "supportMessage": "This app is made with love 💙. If you find it useful, you can support its development.",
+    "buyPremium": "Buy Premium",
+    "sendDonation": "Support with a Donation",
+    "subtitleSupportUkraine": "Help Ukraine",
+    "supportUkraine": "You can also support Ukraine during this difficult time. Every contribution matters.",
+    "supportUkraineButton": "Support Ukraine"
+  },
+
   "notFound": {
     "title": "Not Found",
     "description1": "Looks like you got lost.",

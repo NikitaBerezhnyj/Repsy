@@ -1,4 +1,4 @@
-import { useTheme } from "@/hooks/useTheme";
+import { colors, spacing } from "@/theme";
 import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import { useTranslation } from "react-i18next";
@@ -10,7 +10,6 @@ type Props = {
 };
 
 export default function ExerciseManagerCard({ onPress }: Props) {
-  const { colors } = useTheme();
   const { t } = useTranslation();
 
   return (
@@ -32,7 +31,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    padding: 16,
+    padding: spacing.md,
     borderRadius: 12,
     gap: 8,
     shadowColor: "#000",
@@ -40,7 +39,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.05,
     shadowRadius: 2,
     elevation: 1,
-    marginBottom: 12
+    marginBottom: spacing.md
   },
   menuItemText: {
     flex: 1

@@ -1,4 +1,4 @@
-import { useTheme } from "@/hooks/useTheme";
+import { colors, sizes, spacing } from "@/theme";
 import React from "react";
 import { StyleProp, Text, TextProps, TextStyle, View } from "react-native";
 
@@ -14,8 +14,6 @@ export const Paragraph: React.FC<ParagraphProps> = ({
   children,
   ...props
 }) => {
-  const { colors, spacing, fontSizes } = useTheme();
-
   return (
     <View>
       <Text
@@ -23,7 +21,7 @@ export const Paragraph: React.FC<ParagraphProps> = ({
         style={[
           {
             fontFamily: "Unbounded",
-            fontSize: fontSizes.md,
+            fontSize: sizes.md,
             color: colors.text,
             fontWeight: "400",
             textAlign: align,

@@ -1,4 +1,4 @@
-import { useTheme } from "@/hooks/useTheme";
+import { colors, spacing } from "@/theme";
 import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import { Pressable, StyleSheet, View } from "react-native";
@@ -11,8 +11,6 @@ type CheckboxProps = {
 };
 
 export const Checkbox: React.FC<CheckboxProps> = ({ label, checked, onToggle }) => {
-  const { colors } = useTheme();
-
   return (
     <Pressable
       onPress={onToggle}
@@ -41,10 +39,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    gap: 8
+    gap: spacing.sm
   },
   textContainer: {
     flex: 1,
-    paddingRight: 8
+    paddingRight: spacing.sm
   }
 });

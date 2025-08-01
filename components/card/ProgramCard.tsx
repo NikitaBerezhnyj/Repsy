@@ -1,4 +1,4 @@
-import { useTheme } from "@/hooks/useTheme";
+import { colors, spacing } from "@/theme";
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import React from "react";
@@ -15,8 +15,6 @@ interface Props {
 }
 
 export default function ProgramCard({ program }: Props) {
-  const { colors } = useTheme();
-
   const openProgram = () => {
     router.push(`/(stack)/program/${program.id}`);
   };
@@ -47,9 +45,9 @@ const styles = StyleSheet.create({
   card: {
     flexDirection: "row",
     alignItems: "center",
-    padding: 16,
+    padding: spacing.md,
     borderRadius: 12,
-    marginBottom: 12,
+    marginBottom: spacing.md,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.05,
@@ -63,6 +61,6 @@ const styles = StyleSheet.create({
     flexDirection: "row"
   },
   actionButton: {
-    padding: 8
+    padding: spacing.sm
   }
 });

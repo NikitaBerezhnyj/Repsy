@@ -3,13 +3,12 @@ import { MoodButton } from "@/components/ui/MoodButton";
 import { Paragraph } from "@/components/ui/Paragraph";
 import { Subtitle } from "@/components/ui/Subtitle";
 import { Title } from "@/components/ui/Title";
-import { useTheme } from "@/hooks/useTheme";
+import { colors, spacing } from "@/theme";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { StyleSheet, View } from "react-native";
 
 export default function SessionCompleteScreen() {
-  const { colors } = useTheme();
   const { t } = useTranslation();
 
   const trainingTime = 60;
@@ -71,19 +70,19 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    padding: 16
+    padding: spacing.md
   },
   inner: {
     width: "100%",
-    paddingHorizontal: 24,
-    gap: 16
+    paddingHorizontal: spacing.lg,
+    gap: spacing.md
   },
   moodRow: {
     flexDirection: "row",
     justifyContent: "space-around",
-    gap: 8
+    gap: spacing.sm
   },
   spacer: {
-    height: 24
+    height: spacing.lg
   }
 });

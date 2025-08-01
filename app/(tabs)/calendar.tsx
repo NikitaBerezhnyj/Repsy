@@ -11,7 +11,6 @@ export default function CalendarScreen() {
       <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
         <Text style={styles.title}>Календар</Text>
 
-        {/* Імітуємо календарну сітку */}
         <View style={styles.calendarGrid}>
           {Array.from({ length: 28 }, (_, i) => (
             <View key={i} style={styles.dayCell}>

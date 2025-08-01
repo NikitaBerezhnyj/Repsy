@@ -1,4 +1,4 @@
-import { useTheme } from "@/hooks/useTheme";
+import { colors, sizes, spacing } from "@/theme";
 import React from "react";
 import { StyleProp, TextInput, TextInputProps, TextStyle, View, ViewStyle } from "react-native";
 
@@ -17,8 +17,6 @@ export const Input: React.FC<InputProps> = ({
   inputStyle,
   ...props
 }) => {
-  const { colors, spacing, fontSizes } = useTheme();
-
   return (
     <View style={[styles.container(colors, spacing), containerStyle]}>
       <TextInput
@@ -28,7 +26,7 @@ export const Input: React.FC<InputProps> = ({
         onChangeText={onChangeText}
         keyboardType={keyboardType}
         secureTextEntry={secureTextEntry}
-        style={[styles.input(colors, fontSizes), inputStyle]}
+        style={[styles.input(colors, sizes), inputStyle]}
         {...props}
       />
     </View>
@@ -45,9 +43,9 @@ const styles = {
     paddingVertical: spacing.sm,
     marginVertical: spacing.xs
   }),
-  input: (colors: any, fontSizes: any): TextStyle => ({
+  input: (colors: any, sizes: any): TextStyle => ({
     color: colors.text,
-    fontSize: fontSizes.md,
-    padding: 0
+    fontSize: sizes.md,
+    padding: spacing.none
   })
 };

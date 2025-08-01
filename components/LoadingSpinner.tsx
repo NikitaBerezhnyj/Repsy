@@ -1,4 +1,4 @@
-import { useTheme } from "@/hooks/useTheme";
+import { colors } from "@/theme";
 import React from "react";
 import { ActivityIndicator, Modal, StyleSheet, View } from "react-native";
 
@@ -7,8 +7,6 @@ type LoadingSpinnerProps = {
 };
 
 export const LoadingSpinner = ({ visible = true }: LoadingSpinnerProps) => {
-  const { colors } = useTheme();
-
   return (
     <Modal visible={visible} transparent animationType="none" statusBarTranslucent>
       <View style={styles.overlay}>

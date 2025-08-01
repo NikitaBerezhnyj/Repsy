@@ -3,8 +3,7 @@ import ProgramCard from "@/components/card/ProgramCard";
 import ProgramManagerCard from "@/components/card/ProgramManagerCard";
 import ScreenContainer from "@/components/ScreenContainer";
 import { Paragraph } from "@/components/ui/Paragraph";
-import { useTheme } from "@/hooks/useTheme";
-import { colors } from "@/theme";
+import { colors, spacing } from "@/theme";
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import React from "react";
@@ -19,7 +18,6 @@ const programs = [
 ];
 
 export default function HomeScreen() {
-  const { spacing } = useTheme();
   const { t } = useTranslation();
 
   const openExercises = () => {
@@ -64,12 +62,12 @@ const styles = StyleSheet.create({
     flex: 1
   },
   section: {
-    marginBottom: 32
+    marginBottom: spacing.xl
   },
   sectionHeader: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginBottom: 16
+    marginBottom: spacing.md
   }
 });
